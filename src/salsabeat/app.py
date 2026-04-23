@@ -43,9 +43,7 @@ class SalsaBeatCoachApp:
         self.pending_events: list[ScheduledEvent] = []
         self.current_sequence: Sequence | None = None
 
-        self.status_var = tk.StringVar(
-            value=f"Ready: tap {self.tap_tracker.required_taps} times on salsa counts 1 and 5."
-        )
+        self.status_var = tk.StringVar(value=self._ready_status_text())
         self.tap_progress_var = tk.StringVar(value=f"Tap 0/{self.tap_tracker.required_taps}")
         self.bpm_var = tk.StringVar(value="Estimated BPM: --")
         self.current_step_var = tk.StringVar(value="Current Step: waiting for session start")
@@ -74,15 +72,21 @@ class SalsaBeatCoachApp:
         status_label.grid(row=1, column=0, sticky="ew", pady=(10, 12))
 
         self.tap_button = ttk.Button(container, text="This is the one!", command=self.handle_tap)
-        self.tap_button.grid(row=2, column=0, sticky="ew", pady=(0, 16))
+        self.tap_button.grid(row=2, column=0, sticky="ew", pady=(0, 8))
 
-        ttk.Label(container, textvariable=self.tap_progress_var).grid(row=3, column=0, sticky="w")
+        self.reset_button = ttk.Button(container, text="Reset", command=self.reset_session)
+        self.reset_button.grid(row=3, column=0, sticky="ew", pady=(0, 16))
+
+        ttk.Label(container, textvariable=self.tap_progress_var).grid(row=4, column=0, sticky="w")
         ttk.Label(container, textvariable=self.bpm_var).grid(
-            row=4, column=0, sticky="w", pady=(6, 0)
-        )
-        ttk.Label(container, textvariable=self.current_step_var).grid(
             row=5, column=0, sticky="w", pady=(6, 0)
         )
+        ttk.Label(container, textvariable=self.current_step_var).grid(
+            row=6, column=0, sticky="w", pady=(6, 0)
+        )
+
+    def _ready_status_text(self) -> str:
+        return f"Ready: tap {self.tap_tracker.required_taps} times on salsa counts 1 and 5."
 
     def _sync_audio_cache(self) -> None:
         clip_names = required_clip_names(self.sequence_library.sequences)
@@ -97,9 +101,24 @@ class SalsaBeatCoachApp:
             self.tap_button.state(["disabled"])
             return
 
-        self.status_var.set(
-            f"Ready: tap {self.tap_tracker.required_taps} times on salsa counts 1 and 5."
-        )
+        self.tap_button.state(["!disabled"])
+        self.status_var.set(self._ready_status_text())
+
+    def _reload_sequences(self) -> None:
+        self.sequence_library = SequenceLibrary.from_path(SEQUENCES_PATH)
+
+    def reset_session(self) -> None:
+        self.audio_player.stop_all()
+        self.pending_events.clear()
+        self.tap_tracker.reset()
+        self.state = SessionState()
+        self.measure_duration = None
+        self.current_sequence = None
+        self._reload_sequences()
+        self.tap_progress_var.set(f"Tap 0/{self.tap_tracker.required_taps}")
+        self.bpm_var.set("Estimated BPM: --")
+        self.current_step_var.set("Current Step: waiting for session start")
+        self._sync_audio_cache()
 
     def handle_tap(self) -> None:
         result = self.tap_tracker.register_tap()
@@ -110,7 +129,7 @@ class SalsaBeatCoachApp:
                     "Ignored a quick double-tap. Keep tapping on counts 1 and 5."
                 )
             elif result.ignored_reason == "session_locked":
-                self.status_var.set("Session already calibrated. Restart the app to recalibrate.")
+                self.status_var.set("Session already calibrated. Press Reset to recalibrate.")
             return
 
         self.state.tap_count = result.snapshot.tap_count

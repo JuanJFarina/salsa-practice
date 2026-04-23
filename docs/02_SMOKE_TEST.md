@@ -33,6 +33,7 @@
 5. Confirm each next step is spoken before the transition.
 
 ## Recovery And Restart
-1. Close and reopen the app.
-2. Confirm the session resets to the initial ready state.
-3. If timing drifts or the song changes, restart and recalibrate.
+1. Click **Reset** during or after a session.
+2. Confirm the app returns to the initial ready state.
+3. Confirm tap progress returns to `Tap 0/16` and the tap button is active again.
+4. If timing drifts or the song changes, press **Reset** and recalibrate.

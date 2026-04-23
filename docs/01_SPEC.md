@@ -107,10 +107,11 @@ The application is optimized for short 1-2 minute practice sessions. If the song
 
 ## 5. UI Requirements (Tkinter)
 * **Primary Button:** **"This is the one!"** used for the 16 calibration taps
+* **Reset Button:** Clears the current session and returns the app to the initial calibration state
 * **Button State:** Shows progress and becomes disabled after tap 16
 * **Labels:** Display session status, estimated BPM, and the name of the current step
 * **Minimal UI:** No extra configuration controls are required for V1
-* **Reset Behavior:** Restarting the application resets the session
+* **Reset Behavior:** Pressing **Reset** stops audio, clears queued cues, and lets the user tap the tempo again from the beginning
 
 ## 6. Future Enhancement (Optional)
 * A future hybrid mode may estimate BPM from Windows system audio (for example via WASAPI loopback) while still keeping manual synchronization through the final tap flow.
