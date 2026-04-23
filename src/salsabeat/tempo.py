@@ -9,12 +9,12 @@ from .models import TapResult, TempoSnapshot
 
 
 class TapTempoTracker:
-    """Collects 8 measure-spaced taps and derives tempo from their average spacing."""
+    """Collects measure-spaced taps and derives tempo from their average spacing."""
 
     def __init__(
         self,
         *,
-        required_taps: int = 8,
+        required_taps: int = 12,
         min_tap_interval: float = 0.35,
         clock: Callable[[], float] = time.perf_counter,
     ) -> None:

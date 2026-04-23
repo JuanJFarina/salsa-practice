@@ -16,14 +16,14 @@
 
 ## Calibration Flow
 1. Play a metronome or salsa track on the same computer.
-2. Tap the button 8 times on the landmark counts `1`, `5`, `1`, `5`, ...
+2. Tap the button 12 times on the landmark counts `1`, `5`, `1`, `5`, ...
 3. Confirm:
-   * Tap progress reaches `Tap 8/8`
+   * Tap progress reaches `Tap 12/12`
    * The estimated BPM updates during tapping
-   * The button becomes disabled after tap 8
+   * The button becomes disabled after tap 12
 
 ## Lead-In And Dictation
-1. After tap 8, confirm the app plays:
+1. After tap 12, confirm the app plays:
    * `one`
    * `five`
    * `one`

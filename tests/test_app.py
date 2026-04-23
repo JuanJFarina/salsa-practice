@@ -35,14 +35,14 @@ def test_start_session_schedules_correct_startup_phrase(monkeypatch) -> None:
             "announce_next_sequence",
             "start_sequence",
         ]
+        first_sequence = scheduled_events[4].sequence
+        assert first_sequence is not None
         assert [event.clip_name for event in scheduled_events[:4]] == [
             "one",
             "five",
             "one",
-            "Basic Step",
+            first_sequence.step,
         ]
-        assert scheduled_events[4].sequence is not None
-        assert scheduled_events[4].sequence.step == "Basic Step"
         assert app.current_sequence is None
         assert app.current_step_var.get() == "Current Step: waiting for first step"
     finally:

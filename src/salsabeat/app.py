@@ -42,7 +42,9 @@ class SalsaBeatCoachApp:
         self.pending_events: list[ScheduledEvent] = []
         self.current_sequence: Sequence | None = None
 
-        self.status_var = tk.StringVar(value="Ready: tap on salsa counts 1 and 5.")
+        self.status_var = tk.StringVar(
+            value=f"Ready: tap {self.tap_tracker.required_taps} times on salsa counts 1 and 5."
+        )
         self.tap_progress_var = tk.StringVar(value=f"Tap 0/{self.tap_tracker.required_taps}")
         self.bpm_var = tk.StringVar(value="Estimated BPM: --")
         self.current_step_var = tk.StringVar(value="Current Step: waiting for session start")
