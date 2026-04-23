@@ -29,7 +29,8 @@
     "start_position": "cerrada",
     "end_position": "cerrada"
   },
-  {"step": "Dile que si debajo del brazo",
+  {
+    "step": "Dile que si debajo del brazo",
     "eight_counts": 1,
     "start_position": "cerrada",
     "end_position": "subida"
@@ -52,32 +53,38 @@
     "start_position": "setenta",
     "end_position": "cerrada"
   },
-  {"step": "Enchufa y sube",
+  {
+    "step": "Enchufa y sube",
     "eight_counts": 1,
     "start_position": "setenta",
     "end_position": "subida"
   },
-  {"step": "Enchufa y sube con dos manos",
+  {
+    "step": "Enchufa y sube con dos manos",
     "eight_counts": 1,
     "start_position": "setenta",
     "end_position": "abierta cruzada"
   },
-  {"step": "Giro simple setenta",
+  {
+    "step": "Giro simple setenta",
     "eight_counts": 1,
     "start_position": "abierta cruzada",
     "end_position": "abierta"
   },
-  {"step": "Enchufa y 73",
+  {
+    "step": "Enchufa y 73",
     "eight_counts": 2,
     "start_position": "setenta",
     "end_position": "cerrada"
   },
-  {"step": "Enchufa y cierra",
+  {
+    "step": "Enchufa y cierra",
     "eight_counts": 1,
     "start_position": "subida",
     "end_position": "cerrada"
   },
-  {"step": "Enchufa y tia",
+  {
+    "step": "Enchufa y tia",
     "eight_counts": 2,
     "start_position": "subida",
     "end_position": "cerrada"
