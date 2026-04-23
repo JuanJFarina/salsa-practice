@@ -6,21 +6,51 @@
     "end_position": "cerrada"
   },
   {
+    "step": "Desplazamiento",
+    "eight_counts": 1,
+    "start_position": "cerrada",
+    "end_position": "cerrada"
+  },
+  {
     "step": "Dile que no",
     "eight_counts": 1,
     "start_position": "cerrada",
     "end_position": "abierta"
   },
   {
-    "step": "Giro simple de setenta",
+    "step": "Giro simple setenta",
     "eight_counts": 1,
     "start_position": "abierta",
     "end_position": "setenta"
   },
   {
-    "step": "Enchufa de setenta",
+    "step": "Enchufa setenta",
     "eight_counts": 1,
     "start_position": "setenta",
+    "end_position": "cerrada"
+  },
+  {
+    "step": "Giro simple sombrero",
+    "eight_counts": 1,
+    "start_position": "abierta",
+    "end_position": "sombrero"
+  },
+  {
+    "step": "Enchufa sombrero coronan ambos",
+    "eight_counts": 1,
+    "start_position": "sombrero",
+    "end_position": "cerrada"
+  },
+  {
+    "step": "Enchufa sombrero corona a ella",
+    "eight_counts": 1,
+    "start_position": "sombrero",
+    "end_position": "cerrada con izquierda opuesta"
+  },
+  {
+    "step": "Tornillo desde sombrero",
+    "eight_counts": 1,
+    "start_position": "cerrada con izquierda opuesta",
     "end_position": "cerrada"
   }
 ]

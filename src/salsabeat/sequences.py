@@ -81,7 +81,10 @@ class SequenceLibrary:
         return [sequence for sequence in self.sequences if sequence.start_position == "any"]
 
     def choose_initial(self) -> Sequence:
-        return self.choose_next(self.default_position)
+        try:
+            return self.choose_next(self.default_position)
+        except LookupError:
+            return self._rng.choice(self.sequences)
 
     def choose_next(self, current_position: str) -> Sequence:
         candidates = self.compatible_sequences(current_position)

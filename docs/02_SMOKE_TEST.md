@@ -3,8 +3,7 @@
 ## Setup
 1. Install dependencies:
    * `python -m pipenv install --dev`
-2. Generate cached audio clips:
-   * `python -m pipenv run python scripts/generate_tts.py`
+2. Make sure `sequences.json` contains the steps you want to practice.
 
 ## Launch
 1. Start the desktop app:
@@ -13,6 +12,7 @@
    * The **"This is the one!"** button
    * A ready status message
    * Tap progress, BPM, and current step labels
+3. If you changed `sequences.json`, confirm startup finishes without an audio-cache error.
 
 ## Calibration Flow
 1. Play a metronome or salsa track on the same computer.
@@ -24,9 +24,9 @@
 
 ## Lead-In And Dictation
 1. After tap 12, confirm the app plays:
-   * `one`
-   * `five`
-   * `one`
+   * `uno`
+   * `cinco`
+   * `uno`
 2. Confirm the first step name is spoken on the next count `5`.
 3. Confirm the current step label switches from the waiting state to an actual step on the following count `1`.
 4. Keep dancing through at least 3 step changes.

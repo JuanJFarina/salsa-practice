@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .models import Sequence
+from .timeline import LEAD_IN_CUES
 
 
 class MissingAudioAssetError(FileNotFoundError):
@@ -34,7 +35,7 @@ def clip_path_for_name(assets_dir: Path, clip_name: str) -> Path:
 
 
 def required_clip_names(sequences: list[Sequence]) -> list[str]:
-    ordered = dict.fromkeys(["one", "five", *(sequence.step for sequence in sequences)])
+    ordered = dict.fromkeys([*LEAD_IN_CUES, *(sequence.step for sequence in sequences)])
     return list(ordered)
 
 

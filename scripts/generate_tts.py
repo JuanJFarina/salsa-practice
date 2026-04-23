@@ -5,10 +5,9 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-import pyttsx3
-
-from salsabeat.audio import clip_path_for_name, required_clip_names
+from salsabeat.audio import required_clip_names
 from salsabeat.sequences import SequenceLibrary
+from salsabeat.tts_cache import sync_tts_cache
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 
@@ -30,22 +29,12 @@ def main() -> int:
     args = parse_args()
     library = SequenceLibrary.from_path(DEFAULT_SEQUENCES_PATH)
     clip_names = required_clip_names(library.sequences)
-
-    DEFAULT_AUDIO_DIR.mkdir(parents=True, exist_ok=True)
-    engine = pyttsx3.init()
-    engine.setProperty("rate", 210)
-
-    for clip_name in clip_names:
-        target_path = clip_path_for_name(DEFAULT_AUDIO_DIR, clip_name)
-        if target_path.exists() and not args.force:
-            print(f"Skipping existing clip: {target_path.name}")
-            continue
-        print(f"Generating clip: {target_path.name}")
-        engine.save_to_file(clip_name, str(target_path))
-
-    engine.runAndWait()
-    engine.stop()
-    print(f"Generated cached clips in {DEFAULT_AUDIO_DIR}")
+    report = sync_tts_cache(DEFAULT_AUDIO_DIR, clip_names, force=args.force)
+    for clip_name in report.generated_clips:
+        print(f"Generated clip: {clip_name}")
+    for file_name in report.deleted_files:
+        print(f"Deleted stale clip: {file_name}")
+    print(f"Synced cached clips in {DEFAULT_AUDIO_DIR}")
     return 0
 
 

@@ -32,7 +32,7 @@ class Sequence:
 
 @dataclass(frozen=True, slots=True)
 class Cue:
-    """A spoken cue such as 'five' or 'one' scheduled in absolute time."""
+    """A spoken cue such as 'cinco' or 'uno' scheduled in absolute time."""
 
     name: str
     scheduled_time: float

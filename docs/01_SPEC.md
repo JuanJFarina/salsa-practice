@@ -3,7 +3,7 @@
 ## 1. Overview
 A Windows desktop application built in Python that helps the user practice salsa on1 by dictating dance sequences in time with music. For V1, the app does not perform automatic BPM detection. Instead, the user calibrates the tempo manually by tapping a single button twelve times on the salsa landmark counts (`1` and `5`).
 
-After the final tap, the app plays a short spoken lead-in (`one`, `five`, `one`) to give the user time to get ready. The first sequence name is then spoken on the next count `5`, and the dancer starts that sequence on the following count `1`. After that, the app dictates randomized sequences loaded from a JSON file.
+After the final tap, the app plays a short spoken lead-in (`uno`, `cinco`, `uno`) to give the user time to get ready. The first sequence name is then spoken on the next count `5`, and the dancer starts that sequence on the following count `1`. After that, the app dictates randomized sequences loaded from a JSON file.
 
 The application is optimized for short 1-2 minute practice sessions. If the song or timing changes, the expected workflow is to restart the session and recalibrate.
 
@@ -32,7 +32,7 @@ The application is optimized for short 1-2 minute practice sessions. If the song
 
 ### 3.2. Synchronization and Lead-In
 * After the 12th tap, the app locks the tempo and starts a spoken lead-in.
-* Because the 12th tap lands on count `5`, the lead-in consists of the cues **"one"**, **"five"**, **"one"**, spaced **one measure apart**.
+* Because the 12th tap lands on count `5`, the lead-in consists of the cues **"uno"**, **"cinco"**, **"uno"**, spaced **one measure apart**.
 * The purpose of the lead-in is to give the user time to begin dancing and verify that the app feels synchronized with the music.
 * After that lead-in, the app announces the first sequence name on the next count `5`.
 * The dancer begins the first sequence on the following count `1`.
@@ -47,6 +47,7 @@ The application is optimized for short 1-2 minute practice sessions. If the song
   * `start_position`: the logical position required to begin the sequence
   * `end_position`: the logical position produced when the sequence ends
 * The session starts from a default logical position such as `neutral`.
+* If no sequence can start from that default position, the app may begin with any available sequence.
 * The app selects the next sequence randomly from the set of sequences whose `start_position` matches the current `end_position`.
 * If no compatible sequence exists, the app may fall back to a recovery rule such as:
   * selecting a sequence with `start_position: "any"`
@@ -58,10 +59,13 @@ The application is optimized for short 1-2 minute practice sessions. If the song
 * Spoken audio should be generated **ahead of time** and saved to disk.
 * The app should **not** synthesize TTS live during a practice session.
 * At minimum, the application must have cached audio clips for:
-  * `one`
-  * `five`
+  * `uno`
+  * `cinco`
   * every sequence name present in `sequences.json`
-* Missing audio clips may be generated at startup or by a separate utility script.
+* On application startup, the app automatically synchronizes the cache directory:
+  * generates any missing clips required by the current `sequences.json`
+  * deletes stale `.wav` files that are no longer required
+* A separate utility script may still be provided for manual regeneration when needed.
 * The recommended output format is `.wav` for simple and predictable playback on Windows.
 * During practice, the app only queues and plays pre-generated audio files from `assets/audio/tts/`.
 

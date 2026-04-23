@@ -11,7 +11,7 @@ from salsabeat.timeline import (
 def test_lead_in_starts_one_measure_after_final_tap() -> None:
     lead_in = build_lead_in(final_tap_time=10.0, measure_duration=1.5)
 
-    assert [cue.name for cue in lead_in] == ["one", "five", "one"]
+    assert [cue.name for cue in lead_in] == ["uno", "cinco", "uno"]
     assert [cue.scheduled_time for cue in lead_in] == [11.5, 13.0, 14.5]
 
 

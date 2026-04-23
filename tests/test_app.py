@@ -1,17 +1,21 @@
 import tkinter as tk
 
 from salsabeat.app import SalsaBeatCoachApp
-from salsabeat.audio import AudioPreflight
+from salsabeat.tts_cache import TtsCacheSyncReport
 
 
 def test_start_session_schedules_correct_startup_phrase(monkeypatch) -> None:
-    def fake_preflight(self, clip_names):
-        return AudioPreflight(required_clips=tuple(clip_names), missing_clips=())
+    def fake_sync_tts_cache(audio_dir, clip_names):
+        return TtsCacheSyncReport(
+            required_clips=tuple(clip_names),
+            generated_clips=(),
+            deleted_files=(),
+        )
 
     def fake_preload(self, clip_names) -> None:
         return None
 
-    monkeypatch.setattr("salsabeat.app.AudioPlayer.preflight", fake_preflight)
+    monkeypatch.setattr("salsabeat.app.sync_tts_cache", fake_sync_tts_cache)
     monkeypatch.setattr("salsabeat.app.AudioPlayer.preload", fake_preload)
 
     root = tk.Tk()
@@ -38,9 +42,9 @@ def test_start_session_schedules_correct_startup_phrase(monkeypatch) -> None:
         first_sequence = scheduled_events[4].sequence
         assert first_sequence is not None
         assert [event.clip_name for event in scheduled_events[:4]] == [
-            "one",
-            "five",
-            "one",
+            "uno",
+            "cinco",
+            "uno",
             first_sequence.step,
         ]
         assert app.current_sequence is None

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from .models import Cue, Sequence
 
-LEAD_IN_CUES = ("one", "five", "one")
+LEAD_IN_CUES = ("uno", "cinco", "uno")
 FIRST_LEAD_IN_DELAY_MEASURES = 1
 INITIAL_SEQUENCE_ANNOUNCEMENT_DELAY_MEASURES = 4
 INITIAL_SEQUENCE_START_DELAY_MEASURES = 5
@@ -14,7 +14,7 @@ def build_lead_in(final_tap_time: float, measure_duration: float) -> list[Cue]:
     """Build the fixed lead-in after the calibration taps.
 
     The final calibration tap lands on count ``5``. The lead-in therefore begins one
-    measure later on count ``1`` and continues as ``one, five, one``.
+    measure later on count ``1`` and continues as ``uno, cinco, uno``.
     """
 
     if measure_duration <= 0:

@@ -19,6 +19,7 @@ from .timeline import (
     sequence_announcement_time,
     sequence_end_time,
 )
+from .tts_cache import sync_tts_cache
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 SEQUENCES_PATH = ROOT_DIR / "sequences.json"
@@ -50,7 +51,7 @@ class SalsaBeatCoachApp:
         self.current_step_var = tk.StringVar(value="Current Step: waiting for session start")
 
         self._build_ui()
-        self._run_audio_preflight()
+        self._sync_audio_cache()
         self.root.protocol("WM_DELETE_WINDOW", self._on_close)
         self.root.after(EVENT_POLL_MS, self._process_pending_events)
 
@@ -83,26 +84,22 @@ class SalsaBeatCoachApp:
             row=5, column=0, sticky="w", pady=(6, 0)
         )
 
-    def _run_audio_preflight(self) -> None:
+    def _sync_audio_cache(self) -> None:
         clip_names = required_clip_names(self.sequence_library.sequences)
-        report = self.audio_player.preflight(clip_names)
-        if not report.ok:
-            preview = ", ".join(report.missing_clips[:4])
-            if len(report.missing_clips) > 4:
-                preview = f"{preview}, ..."
-            self.status_var.set(
-                "Missing cached audio clips. Run "
-                "`python -m pipenv run python scripts/generate_tts.py` "
-                f"to create them. Missing: {preview}"
-            )
+        self.status_var.set("Syncing cached audio...")
+        self.root.update_idletasks()
+
+        try:
+            report = sync_tts_cache(AUDIO_DIR, clip_names)
+            self.audio_player.preload(list(report.required_clips))
+        except (MissingAudioAssetError, OSError, RuntimeError) as exc:
+            self.status_var.set(f"Audio sync failed: {exc}")
             self.tap_button.state(["disabled"])
             return
 
-        try:
-            self.audio_player.preload(list(report.required_clips))
-        except MissingAudioAssetError as exc:
-            self.status_var.set(str(exc))
-            self.tap_button.state(["disabled"])
+        self.status_var.set(
+            f"Ready: tap {self.tap_tracker.required_taps} times on salsa counts 1 and 5."
+        )
 
     def handle_tap(self) -> None:
         result = self.tap_tracker.register_tap()
@@ -141,7 +138,7 @@ class SalsaBeatCoachApp:
         self.current_sequence = None
         first_sequence = self.sequence_library.choose_initial()
         self.current_step_var.set("Current Step: waiting for first step")
-        self.status_var.set("Lead-in started: listen for one, five, one.")
+        self.status_var.set("Lead-in started: listen for uno, cinco, uno.")
 
         for cue in build_lead_in(final_tap_time, measure_duration):
             self._push_event(
