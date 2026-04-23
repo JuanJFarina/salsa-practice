@@ -14,7 +14,7 @@ class TapTempoTracker:
     def __init__(
         self,
         *,
-        required_taps: int = 12,
+        required_taps: int = 16,
         min_tap_interval: float = 0.35,
         clock: Callable[[], float] = time.perf_counter,
     ) -> None:

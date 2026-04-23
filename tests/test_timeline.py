@@ -15,15 +15,15 @@ def test_lead_in_starts_one_measure_after_final_tap() -> None:
     assert [cue.scheduled_time for cue in lead_in] == [11.5, 13.0, 14.5]
 
 
-def test_initial_sequence_announcement_happens_on_count_five_before_start() -> None:
-    assert initial_sequence_announcement_time(final_tap_time=10.0, measure_duration=1.5) == 16.0
+def test_initial_sequence_announcement_happens_on_beat_four_before_count_five() -> None:
+    assert initial_sequence_announcement_time(final_tap_time=10.0, measure_duration=1.5) == 15.625
 
 
 def test_initial_sequence_starts_after_lead_in() -> None:
     assert initial_sequence_start_time(final_tap_time=10.0, measure_duration=1.5) == 17.5
 
 
-def test_sequence_timing_uses_final_cycle_count_five() -> None:
+def test_sequence_timing_uses_final_cycle_beat_four() -> None:
     sequence = Sequence(
         step="Setenta",
         eight_counts=2,
@@ -31,5 +31,5 @@ def test_sequence_timing_uses_final_cycle_count_five() -> None:
         end_position="closed",
     )
 
-    assert sequence_announcement_time(100.0, 1.0, sequence) == 103.0
+    assert sequence_announcement_time(100.0, 1.0, sequence) == 102.75
     assert sequence_end_time(100.0, 1.0, sequence) == 104.0

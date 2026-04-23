@@ -1,5 +1,23 @@
 [
   {
+    "step": "Guapeo",
+    "eight_counts": 1,
+    "start_position": "abierta",
+    "end_position": "abierta"
+  },
+  {
+    "step": "Vacílala",
+    "eight_counts": 1,
+    "start_position": "abierta",
+    "end_position": "cerrada"
+  },
+  {
+    "step": "Prima",
+    "eight_counts": 1,
+    "start_position": "abierta",
+    "end_position": "subida"
+  },
+  {
     "step": "Básico",
     "eight_counts": 1,
     "start_position": "cerrada",
@@ -10,6 +28,11 @@
     "eight_counts": 1,
     "start_position": "cerrada",
     "end_position": "cerrada"
+  },
+  {"step": "Dile que si debajo del brazo",
+    "eight_counts": 1,
+    "start_position": "cerrada",
+    "end_position": "subida"
   },
   {
     "step": "Dile que no",
@@ -27,6 +50,36 @@
     "step": "Enchufa setenta",
     "eight_counts": 1,
     "start_position": "setenta",
+    "end_position": "cerrada"
+  },
+  {"step": "Enchufa y sube",
+    "eight_counts": 1,
+    "start_position": "setenta",
+    "end_position": "subida"
+  },
+  {"step": "Enchufa y sube con dos manos",
+    "eight_counts": 1,
+    "start_position": "setenta",
+    "end_position": "abierta cruzada"
+  },
+  {"step": "Giro simple setenta",
+    "eight_counts": 1,
+    "start_position": "abierta cruzada",
+    "end_position": "abierta"
+  },
+  {"step": "Enchufa y 73",
+    "eight_counts": 2,
+    "start_position": "setenta",
+    "end_position": "cerrada"
+  },
+  {"step": "Enchufa y cierra",
+    "eight_counts": 1,
+    "start_position": "subida",
+    "end_position": "cerrada"
+  },
+  {"step": "Enchufa y tia",
+    "eight_counts": 2,
+    "start_position": "subida",
     "end_position": "cerrada"
   },
   {
@@ -51,6 +104,24 @@
     "step": "Tornillo desde sombrero",
     "eight_counts": 1,
     "start_position": "cerrada con izquierda opuesta",
+    "end_position": "cerrada"
+  },
+  {
+    "step": "Tornillo",
+    "eight_counts": 1,
+    "start_position": "cerrada",
+    "end_position": "cerrada"
+  },
+  {
+    "step": "Giro simple con izquierda",
+    "eight_counts": 1,
+    "start_position": "abierta",
+    "end_position": "abierta con izquierda"
+  },
+  {
+    "step": "Enchufa y atala",
+    "eight_counts": 2,
+    "start_position": "abierta con izquierda",
     "end_position": "cerrada"
   }
 ]

@@ -29,7 +29,7 @@ def test_start_session_schedules_correct_startup_phrase(monkeypatch) -> None:
             11.5,
             13.0,
             14.5,
-            16.0,
+            15.625,
             17.5,
         ]
         assert [event.kind for event in scheduled_events] == [

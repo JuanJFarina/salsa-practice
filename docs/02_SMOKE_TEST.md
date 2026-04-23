@@ -16,18 +16,18 @@
 
 ## Calibration Flow
 1. Play a metronome or salsa track on the same computer.
-2. Tap the button 12 times on the landmark counts `1`, `5`, `1`, `5`, ...
+2. Tap the button 16 times on the landmark counts `1`, `5`, `1`, `5`, ...
 3. Confirm:
-   * Tap progress reaches `Tap 12/12`
+   * Tap progress reaches `Tap 16/16`
    * The estimated BPM updates during tapping
-   * The button becomes disabled after tap 12
+   * The button becomes disabled after tap 16
 
 ## Lead-In And Dictation
-1. After tap 12, confirm the app plays:
+1. After tap 16, confirm the app plays:
    * `uno`
    * `cinco`
    * `uno`
-2. Confirm the first step name is spoken on the next count `5`.
+2. Confirm the first step name is spoken on beat `4`, just before the next count `5`.
 3. Confirm the current step label switches from the waiting state to an actual step on the following count `1`.
 4. Keep dancing through at least 3 step changes.
 5. Confirm each next step is spoken before the transition.

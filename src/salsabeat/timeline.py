@@ -6,7 +6,8 @@ from .models import Cue, Sequence
 
 LEAD_IN_CUES = ("uno", "cinco", "uno")
 FIRST_LEAD_IN_DELAY_MEASURES = 1
-INITIAL_SEQUENCE_ANNOUNCEMENT_DELAY_MEASURES = 4
+INITIAL_SEQUENCE_ANNOUNCEMENT_DELAY_MEASURES = 3
+INITIAL_SEQUENCE_ANNOUNCEMENT_DELAY_BEATS = 3
 INITIAL_SEQUENCE_START_DELAY_MEASURES = 5
 
 
@@ -40,21 +41,27 @@ def initial_sequence_start_time(final_tap_time: float, measure_duration: float) 
 
 
 def initial_sequence_announcement_time(final_tap_time: float, measure_duration: float) -> float:
-    """Announce the first sequence on the count 5 before it starts."""
+    """Announce the first sequence on beat 4 before the next count 5."""
 
     if measure_duration <= 0:
         raise ValueError("measure_duration must be > 0.")
-    return final_tap_time + INITIAL_SEQUENCE_ANNOUNCEMENT_DELAY_MEASURES * measure_duration
+    beat_duration = measure_duration / 4
+    return (
+        final_tap_time
+        + INITIAL_SEQUENCE_ANNOUNCEMENT_DELAY_MEASURES * measure_duration
+        + INITIAL_SEQUENCE_ANNOUNCEMENT_DELAY_BEATS * beat_duration
+    )
 
 
 def sequence_announcement_time(
     sequence_start_time: float, measure_duration: float, sequence: Sequence
 ) -> float:
-    """Announce the next sequence on count 5 of the current sequence's final cycle."""
+    """Announce the next sequence on beat 4 of the current sequence's final cycle."""
 
     if measure_duration <= 0:
         raise ValueError("measure_duration must be > 0.")
-    return sequence_start_time + (sequence.duration_measures - 1) * measure_duration
+    beat_duration = measure_duration / 4
+    return sequence_start_time + (sequence.duration_measures - 1) * measure_duration - beat_duration
 
 
 def sequence_end_time(

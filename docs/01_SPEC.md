@@ -1,7 +1,7 @@
 # Technical Specification: "SalsaBeat Coach"
 
 ## 1. Overview
-A Windows desktop application built in Python that helps the user practice salsa on1 by dictating dance sequences in time with music. For V1, the app does not perform automatic BPM detection. Instead, the user calibrates the tempo manually by tapping a single button twelve times on the salsa landmark counts (`1` and `5`).
+A Windows desktop application built in Python that helps the user practice salsa on1 by dictating dance sequences in time with music. For V1, the app does not perform automatic BPM detection. Instead, the user calibrates the tempo manually by tapping a single button sixteen times on the salsa landmark counts (`1` and `5`).
 
 After the final tap, the app plays a short spoken lead-in (`uno`, `cinco`, `uno`) to give the user time to get ready. The first sequence name is then spoken on the next count `5`, and the dancer starts that sequence on the following count `1`. After that, the app dictates randomized sequences loaded from a JSON file.
 
@@ -20,21 +20,21 @@ The application is optimized for short 1-2 minute practice sessions. If the song
 
 ### 3.1. Manual Tempo Capture
 * The UI exposes a single primary button labeled **"This is the one!"**.
-* The user must tap the button **12 times** on alternating salsa landmark counts (`1`, `5`, `1`, `5`, ...).
+* The user must tap the button **16 times** on alternating salsa landmark counts (`1`, `5`, `1`, `5`, ...).
 * Each tap records a timestamp using a high-resolution clock.
 * Consecutive taps are treated as being **one 4-beat measure apart**, so the tempo is derived as:
   * `measure_duration = average_time_between_taps`
   * `beat_duration = measure_duration / 4`
   * `BPM = 60 / beat_duration = 240 / measure_duration`
-* The app should display tap progress (for example, `Tap 3/12`) and the estimated BPM once enough taps have been recorded.
+* The app should display tap progress (for example, `Tap 3/16`) and the estimated BPM once enough taps have been recorded.
 * Taps that are too close together should be ignored to reduce accidental double-taps.
-* After the 12th tap, the button is disabled for the remainder of the session.
+* After the 16th tap, the button is disabled for the remainder of the session.
 
 ### 3.2. Synchronization and Lead-In
-* After the 12th tap, the app locks the tempo and starts a spoken lead-in.
-* Because the 12th tap lands on count `5`, the lead-in consists of the cues **"uno"**, **"cinco"**, **"uno"**, spaced **one measure apart**.
+* After the 16th tap, the app locks the tempo and starts a spoken lead-in.
+* Because the 16th tap lands on count `5`, the lead-in consists of the cues **"uno"**, **"cinco"**, **"uno"**, spaced **one measure apart**.
 * The purpose of the lead-in is to give the user time to begin dancing and verify that the app feels synchronized with the music.
-* After that lead-in, the app announces the first sequence name on the next count `5`.
+* After that lead-in, the app announces the first sequence name on beat `4`, just before the next count `5`.
 * The dancer begins the first sequence on the following count `1`.
 * For V1, this startup phrase is fixed and not user-configurable.
 * The implementation should define the calibration phase so that the spoken cues and first-step announcement start on the correct landmark counts after the final tap.
@@ -53,7 +53,7 @@ The application is optimized for short 1-2 minute practice sessions. If the song
   * selecting a sequence with `start_position: "any"`
   * resetting the logical position to a default state such as `neutral`
 * A newly selected sequence starts on count `1`.
-* To give the dancer time to react, the next sequence should be announced before it starts. For V1, the preferred trigger point is count `5` of the final cycle of the current sequence.
+* To give the dancer time to react, the next sequence should be announced before it starts. For V1, the preferred trigger point is beat `4` of the final cycle of the current sequence.
 
 ### 3.4. TTS Asset Pipeline
 * Spoken audio should be generated **ahead of time** and saved to disk.
@@ -106,8 +106,8 @@ The application is optimized for short 1-2 minute practice sessions. If the song
 ```
 
 ## 5. UI Requirements (Tkinter)
-* **Primary Button:** **"This is the one!"** used for the 12 calibration taps
-* **Button State:** Shows progress and becomes disabled after tap 12
+* **Primary Button:** **"This is the one!"** used for the 16 calibration taps
+* **Button State:** Shows progress and becomes disabled after tap 16
 * **Labels:** Display session status, estimated BPM, and the name of the current step
 * **Minimal UI:** No extra configuration controls are required for V1
 * **Reset Behavior:** Restarting the application resets the session
