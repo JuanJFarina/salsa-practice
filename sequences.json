@@ -1,0 +1,38 @@
+[
+  {
+    "step": "Basic Step",
+    "eight_counts": 1,
+    "start_position": "neutral",
+    "end_position": "neutral"
+  },
+  {
+    "step": "Cross Body Lead",
+    "eight_counts": 1,
+    "start_position": "closed",
+    "end_position": "open"
+  },
+  {
+    "step": "Right Turn",
+    "eight_counts": 1,
+    "start_position": "neutral",
+    "end_position": "open"
+  },
+  {
+    "step": "Dile que no",
+    "eight_counts": 1,
+    "start_position": "open",
+    "end_position": "closed"
+  },
+  {
+    "step": "Setenta",
+    "eight_counts": 2,
+    "start_position": "closed",
+    "end_position": "closed"
+  },
+  {
+    "step": "Shine Break",
+    "eight_counts": 1,
+    "start_position": "neutral",
+    "end_position": "neutral"
+  }
+]
