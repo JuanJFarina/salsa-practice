@@ -30,7 +30,7 @@
     "end_position": "cerrada"
   },
   {
-    "step": "Dile que si debajo del brazo",
+    "step": "Dile que sí debajo del brazo",
     "eight_counts": 1,
     "start_position": "cerrada",
     "end_position": "subida"
@@ -78,13 +78,19 @@
     "end_position": "cerrada"
   },
   {
-    "step": "Enchufa y cierra",
+    "step": "Enchufa y 74",
+    "eight_counts": 3,
+    "start_position": "setenta",
+    "end_position": "cerrada"
+  },
+  {
+    "step": "Hermana",
     "eight_counts": 1,
     "start_position": "subida",
     "end_position": "cerrada"
   },
   {
-    "step": "Enchufa y tia",
+    "step": "Tía",
     "eight_counts": 2,
     "start_position": "subida",
     "end_position": "cerrada"
@@ -110,6 +116,12 @@
   {
     "step": "Tornillo desde sombrero",
     "eight_counts": 1,
+    "start_position": "cerrada con izquierda opuesta",
+    "end_position": "cerrada"
+  },
+  {
+    "step": "Tornillo con freno",
+    "eight_counts": 2,
     "start_position": "cerrada con izquierda opuesta",
     "end_position": "cerrada"
   },
