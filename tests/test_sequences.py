@@ -58,8 +58,14 @@ def test_sequence_library_uses_any_fallback_when_no_exact_match(tmp_path) -> Non
     assert library.choose_next("open").step == "Shine Break"
 
 
-def test_sequence_library_can_choose_initial_without_neutral_start(tmp_path) -> None:
+def test_sequence_library_starts_from_cerrada_by_default(tmp_path) -> None:
     payload = [
+        {
+            "step": "Guapeo",
+            "eight_counts": 1,
+            "start_position": "abierta",
+            "end_position": "abierta",
+        },
         {
             "step": "Básico",
             "eight_counts": 1,

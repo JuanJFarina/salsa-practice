@@ -46,7 +46,7 @@ The application is optimized for short 1-2 minute practice sessions. If the song
   * `eight_counts`: the number of full 8-beat salsa cycles that the sequence lasts
   * `start_position`: the logical position required to begin the sequence
   * `end_position`: the logical position produced when the sequence ends
-* The session starts from a default logical position such as `neutral`.
+* The session starts from the default logical position `cerrada`.
 * If no sequence can start from that default position, the app may begin with any available sequence.
 * The app selects the next sequence randomly from the set of sequences whose `start_position` matches the current `end_position`.
 * If no compatible sequence exists, the app may fall back to a recovery rule such as:

@@ -17,7 +17,7 @@ class SequenceLibrary:
         self,
         sequences: list[Sequence],
         *,
-        default_position: str = "neutral",
+        default_position: str = "cerrada",
         rng: random.Random | None = None,
     ) -> None:
         if not sequences:
@@ -31,7 +31,7 @@ class SequenceLibrary:
         cls,
         path: Path | str,
         *,
-        default_position: str = "neutral",
+        default_position: str = "cerrada",
         rng: random.Random | None = None,
     ) -> "SequenceLibrary":
         sequence_path = Path(path)
