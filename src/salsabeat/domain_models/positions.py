@@ -1,19 +1,32 @@
 from enum import Enum
 
 
-class Position: ...
+class Basicas:
+    """Basic positions don't require previous steps and can be arranged immediately inbetween steps"""
 
 
-class Cerrada(Position): ...
+class Setenta:
+    """Setenta position require the specific setup for setenta moves"""
 
 
-class Abierta(Position): ...
+class Frenada:
+    """Frenada position require the partner to be setup backwards to you"""
 
 
-class Frenada(Position): ...
+class Espalda:
+    """Espalda position requires you to be setup backwards to your partner"""
 
 
-class Espalda(Position): ...
+class Opuesta:
+    """Opuesta position is a hugging position where you grab the partner's left hand with yours, thus requiring a specific setup"""
+
+
+class Cerrada(Basicas):
+    """Cerrada positions involve non-setup hugging positions"""
+
+
+class Abierta(Basicas):
+    """Abierta positions involve non-setup open positions"""
 
 
 class Agarrada(Cerrada): ...
@@ -49,15 +62,14 @@ class DerechaAmbasCruzadas(Abierta): ...
 class IzquierdaAmbasCruzadas(Abierta): ...
 
 
-class Setenta(Abierta): ...
-
-
 class Positions(Enum):
-    POSITION = Position()
+    BASICAS = Basicas()
     ABIERTA = Abierta()
+    SETENTA = Setenta()
     CERRADA = Cerrada()
     FRENADA = Frenada()
     ESPALDA = Espalda()
+    OPUESTA = Opuesta()
     CERRADA_AGARRADA = Agarrada()
     CERRADA_SUELTA = Suelta()
     ABIERTA_PARALELAS = Paralelas()
@@ -69,4 +81,3 @@ class Positions(Enum):
     ABIERTA_DERECHA_AMBAS_OPUESTAS = DerechaAmbasOpuestas()
     ABIERTA_IZQUIERDA_AMBAS_CRUZADAS = IzquierdaAmbasCruzadas()
     ABIERTA_DERECHA_AMBAS_CRUZADAS = DerechaAmbasCruzadas()
-    ABIERTA_SETENTA = Setenta()
