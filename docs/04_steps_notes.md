@@ -100,9 +100,9 @@ Desde guapeo en abierto izquierda
 
 ### **Dile que no**
 
-Desde posición cerrada
+Desde básico en todas las posiciones
 Básico adelante apartándose a la derecha para que la mujer avance, básico cruzado para volver a enfrentar a la pareja
-Hacia posición abierta
+Hacia guapeo en posiciones básicas
 
 ### **Dile que no con giro**
 
