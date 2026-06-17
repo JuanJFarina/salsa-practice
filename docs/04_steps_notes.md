@@ -106,75 +106,76 @@ Hacia guapeo en posiciones básicas
 
 ### **Dile que no con giro**
 
-Desde posición cerrada
+Desde básico en abierto paralelas o izquierda
 
 Básico adelante apartándose a la derecha para que la mujer avance, girar (Hd) y volver a enfrentar a la pareja
-Hacia posición abierta
+Hacia básico o guapeo en abierto izquierda
 
 ### **Desplazamiento**
 
-Desde posición cerrada
+Desde básico en abrazo cerrado
 
 Básico adelante apartándose a la derecha para que la mujer avance, básico cruzado para volver a enfrentar a la pareja
-Hacia posición cerrada
+Hacia básico en abrazo cerrado
 
 ### **Pasarela / Puente**
 
-Desde posiciones básicas
+Desde básico en abrazo cerrado o suelto o abierto manos paralelas, izquierda u opuesta derecha
 	Dile que no elevando el brazo izquierdo para que la mujer gire Md
-    	Hacia posiciones básicas
+    	Hacia básico o guapeo en posiciones básicas
 
 
 ### **Tornillo**
 
-Desde posición cerrada
+Desde básico en posiciones básicas
 Dile que no con giro simple hacia adentro en 567
-Hacia posición cerrada o abierta
+Hacia básico en abrazo cerrado, cruzado o suelto
 
 ### **Tornillo sin manos**
 
-Desde neutro en abierto
+Desde finta en abierto sueltos
 	Finta volando ambas manos en 123, desde la cintura le marcas el tornillo en 567
+    	Hacia básico en abrazo suelto
 
 
 ### **Tornillo con freno**
 
-Desde posición cerrada
+Desde básico en posiciones básicas
 
 Dile que no con giro simple hacia adentro en 567 que la freno con la mano libre por el hombre
-Hacia posición frenada
+Hacia espalda en posiciones básicas
 
 ### **Dile que si**
 
-Desde posición cerrada
+Desde básico en abrazo cerrado
 Básico adelante apartándose a la izquierda para que la mujer avance, básico cruzado para volver a enfrentar a la pareja
-Hacia posición cerrada o abierta
+Hacia básico en abrazo cerrado
 
 ### **Prima (pos cerrada)**
 
-Desde posición cerrada
+Desde básico en abrazo cerrado
 Dile que sí con un giro por debajo del brazo izquierdo hacia la izquierda en 567
-Hacia posición abierta izquierda
+Hacia guapeo en abierto izquierda
 
 ### **Prima (pos abierta)**
 
-Desde posición abierta ambas, posición abierta izquierda
+Desde guapeo en abierto paralelas o izquierda
 Básico atrás trayendo a la pareja a posición cerrada, proceder igual que la prima desde pos cerrada
-Hacia posición abierta izquierda
+Hacia guapeo en abierto izquierda
 
 ### **Hermana**
 
-Desde posición abierta izquierda
+Desde guapeo en abierto izquierda
 	Enchufa y básico atrás
-    	Hacia posición cerrada agarrada
+    	Hacia básico en posiciones básicas
 
 
 ### **Tía**
 
-Desde posición abierta izquierda
+Desde guapeo en abierto izquierda
 
 Enchufa, subir la pareja cambiando a mano derecha y de nuevo a izquierda girando a izquierda, enchufa, básico atrás
-Hacia posición cerrada agarrada
+Hacia básico en posiciones básicas
 
 ### **Guapeo básico**
 
